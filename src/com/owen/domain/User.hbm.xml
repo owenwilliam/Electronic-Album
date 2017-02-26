@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.owen.domain">
+    <class name="User" table="user_inf">
+        <id name="id" type="int" column="user_id">
+           <generator class="identity"/>
+        </id>
+        <property name="name" type="string" unique="true"/>
+        <property name="pass" type="string"/>
+        <set name="photos" inverse="true">
+           <key column="owner_id"/>
+           <one-to-many class="Photo"/>
+        </set>
+    </class>
+</hibernate-mapping>
